@@ -13,7 +13,9 @@ jobs:
         a: [a, b, c]
         b: [1, 2, 3]
     steps:
-      - run: echo "${{ matrix.a }}/${{ matrix.b }}" >> outputs/${{ matrix.a }}.${{ matrix.b }}.txt
+      - run: | # shell
+          mkdir -p outputs
+          echo "${{ matrix.a }}/${{ matrix.b }}" >> outputs/${{ matrix.a }}.${{ matrix.b }}.txt
 
       - uses: actions/upload-artifact@v4
         with:
