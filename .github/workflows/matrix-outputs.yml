@@ -1,4 +1,4 @@
-# Testing what it outputted from a matrix job
+# Testing how to handle outputs from matrix jobs
 
 name: Matrix Outputs
 
@@ -17,7 +17,8 @@ jobs:
         with:
           matrix-step-name: result
           matrix-key: ${{ matrix.a }}-${{ matrix.b }}
-          outputs: ${{ matrix.a }}/${{ matrix.b }}
+          outputs: | # yaml
+            thing: ${{ matrix.a }}/${{ matrix.b }}
 
   log:
     runs-on: ubuntu-latest
