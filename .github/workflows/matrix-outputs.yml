@@ -1,0 +1,25 @@
+# Testing what it outputted from a matrix job
+
+name: Matrix Outputs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        a: [a, b, c]
+        b: [1, 2, 3]
+    outputs:
+      result: ${{ steps.result.outputs.result }}
+    steps:
+      - id: result
+        run: echo "result=${{ matrix.a }}/${{ matrix.b }}" >> $GITHUB_OUTPUT
+  log:
+    runs-on: ubuntu-latest
+    needs: [matrix]
+    steps:
+      - run: echo "${{ needs.matrix.outputs.result }}" >> $GITHUB_STEP_SUMMARY
+  
