@@ -12,15 +12,20 @@ jobs:
       matrix:
         a: [a, b, c]
         b: [1, 2, 3]
-    outputs:
-      result: ${{ toJSON(steps.result.outputs) }}
     steps:
-      - id: result
-        run: echo "${{ matrix.a }}-${{ matrix.b }}=${{ matrix.a }}/${{ matrix.b }}" >> GITHUB_OUTPUT
+      - uses: cloudposse/github-action-matrix-outputs-write@v1
+        with:
+          matrix-step-name: result
+          matrix-key: ${{ matrix.a }}-${{ matrix.b }}
+          outputs: ${{ matrix.a }}/${{ matrix.b }}
 
   log:
     runs-on: ubuntu-latest
     needs: [matrix]
     steps:
-      - run: echo '${{ needs.matrix.outputs.result }}' >> $GITHUB_STEP_SUMMARY
+      - id: read
+        uses: cloudposse/github-action-matrix-outputs-read@v1
+        with:
+          matrix-step-name: result
+      - run: echo '${{ steps.read.outputs.result }}' >> $GITHUB_STEP_SUMMARY
   
