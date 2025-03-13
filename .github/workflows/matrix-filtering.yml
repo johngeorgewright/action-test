@@ -1,0 +1,37 @@
+# Testing how to "filter", or pre-emptively "continue" when using matrixes
+
+name: Matrix Filtering
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        a: [a, b, c]
+        b: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - name: is even
+        id: test
+        run: | # shell
+          var=${{ matrix.b }}
+          if [[ $((var % 2)) -eq 0 ]]
+          then 
+            echo "$var is even"
+          else
+            echo "$var is odd"
+            exit 1
+          fi
+
+      - run: echo "${{ matrix.a }}/${{ matrix.b }}" >> $GITHUB_STEP_SUMMARY
+
+      - if: steps.test.outcome == 'failure' && failure()
+        run: echo "::notice title=Skipping::Skipping ${{ matrix.b }} is not even
+
+  post-matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Success!" >> $GITHUB_STEP_SUMMARY
