@@ -12,14 +12,22 @@ jobs:
       matrix:
         a: [a, b, c]
         b: [1, 2, 3]
-    outputs:
-      result: ${{ toJSON(steps.result.outputs.result) }}
     steps:
-      - id: result
-        run: echo "result=${{ matrix.a }}/${{ matrix.b }}" >> $GITHUB_OUTPUT
+      - run: echo "${{ matrix.a }}/${{ matrix.b }}" >> outputs/${{ matrix.a }}.${{ matrix.b }}.txt
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: outputs
+          path: outputs/*.txt
+
   log:
     runs-on: ubuntu-latest
     needs: [matrix]
     steps:
-      - run: echo '${{ needs.matrix.outputs.result }}' >> $GITHUB_STEP_SUMMARY
+      - uses: actions/download-artifact@v3
+        with:
+          name: outputs
+          path: outputs
+
+      - run: cat outputs/*.txt >> $GITHUB_STEP_SUMMARY
   
