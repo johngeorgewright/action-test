@@ -32,6 +32,7 @@ jobs:
         run: echo "::notice title=Skipping::Skipping ${{ matrix.b }} is not even
 
   post-matrix:
+    needs: [matrix]
     runs-on: ubuntu-latest
     steps:
       - run: echo "Success!" >> $GITHUB_STEP_SUMMARY
