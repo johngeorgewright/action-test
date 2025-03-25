@@ -1,0 +1,11 @@
+name: Can workflows in sub directories be found
+
+on:
+  workflow_dispatch:
+
+jobs:
+  yes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Yes
+        run: echo 'yes they can!'
