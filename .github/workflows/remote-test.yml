@@ -1,0 +1,12 @@
+name: Testing remote actions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  remote-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: johngeorgewright/workflows/.github/actions/remote-test@remote-test
+        with:
+          text: Yay, it works
