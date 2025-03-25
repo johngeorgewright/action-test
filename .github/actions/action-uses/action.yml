@@ -1,0 +1,12 @@
+name: Action Uses
+
+author: John Wright
+
+description: An action to test if it can use other actions
+
+runs:
+  using: composite
+  steps:
+    - uses: johngeorgewright/workflows/.github/actions/remote-test@remote-test
+      with:
+        text: Yay, it works

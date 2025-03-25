@@ -1,0 +1,14 @@
+name: Action Uses
+
+on:
+  workflow_dispatch:
+
+jobs:
+  action-uses:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/actions
+      - uses: ./.github/actions/action-uses
+
