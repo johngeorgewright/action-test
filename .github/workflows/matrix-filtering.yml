@@ -28,7 +28,7 @@ jobs:
           fi
 
       - if: failure()
-        run: echo "::notice title=Skipping::Skipping ${{ matrix.b }} as it is not even
+        run: echo "::notice title=Skipping::Skipping ${{ matrix.b }} as it is not even"
 
       - run: echo "${{ matrix.a }}/${{ matrix.b }}" >> $GITHUB_STEP_SUMMARY
 
