@@ -1,5 +1,7 @@
 name: Action Uses
 
+description: Attempting to use a composite action that uses other actions.
+
 on:
   workflow_dispatch:
 

@@ -1,5 +1,7 @@
 name: Testing remote actions
 
+description: Calling actions directly from other repositories
+
 on:
   workflow_dispatch:
 
