@@ -1,6 +1,6 @@
 name: Matrix Outputs
 
-description: Testing how to handle outputs from matrix jobs
+# description: Testing how to handle outputs from matrix jobs
 
 on:
   workflow_dispatch:

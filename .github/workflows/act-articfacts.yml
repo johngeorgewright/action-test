@@ -1,8 +1,8 @@
 name: Act Artifacts
 
-description: |
-  When using artificats with Act, you must set the `artifact-server-path` to something.
-  Here I have set it to `$PWD/.artifacts`.
+# description: |
+#   When using artificats with Act, you must set the `artifact-server-path` to something.
+#   Here I have set it to `$PWD/.artifacts`.
 
 on:
   workflow_dispatch:
@@ -17,6 +17,7 @@ jobs:
           name: mung
           path: mung.txt
   download:
+    needs: [upload]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4

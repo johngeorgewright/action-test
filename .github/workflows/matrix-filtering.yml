@@ -1,6 +1,6 @@
 name: Matrix Filtering
 
-description: Testing how to "filter", or pre-emptively "continue" when using matrixes
+# description: Testing how to "filter", or pre-emptively "continue" when using matrixes
 
 on:
   workflow_dispatch:
