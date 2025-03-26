@@ -1,5 +1,7 @@
 name: Can workflows in sub directories be found
 
+description: Turns out they cannot :(
+
 on:
   workflow_dispatch:
 
