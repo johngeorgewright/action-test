@@ -25,7 +25,7 @@ jobs:
           fi
 
       - if: steps.test.outputs.is == 'odd'
-        run: echo "::notice title=Skipping::Skipping ${{ matrix.b }} as it is not even"
+        run: echo "::notice title=Skipping ${{ matrix.a }} / ${{ matrix.b }}::Skipping ${{ matrix.b }} as it is not even"
 
       - if: steps.test.outputs.is == 'even'
         run: echo "${{ matrix.a }}/${{ matrix.b }}" >> $GITHUB_STEP_SUMMARY
