@@ -1,0 +1,20 @@
+{
+  "name": "action-test",
+  "version": "1.0.0",
+  "description": "A workspace for testing GitHub action thingys",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johngeorgewright/action-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johngeorgewright/action-test/issues"
+  },
+  "homepage": "https://github.com/johngeorgewright/action-test#readme"
+}
