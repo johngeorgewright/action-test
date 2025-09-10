@@ -3,6 +3,8 @@ name: Act Artifacts
 # description: |
 #   When using artificats with Act, you must set the `artifact-server-path` to something.
 #   Here I have set it to `$PWD/.artifacts`.
+#   Sometimes the artifact-server-path is incorrect. Running something like this might
+#   help discover the correct one. `ifconfig en0 | grep broadcast | awk '{print $2}'`
 
 on:
   workflow_dispatch:
@@ -12,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'hello mung' > mung.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v3
         with:
           name: mung
           path: mung.txt
