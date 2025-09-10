@@ -4,7 +4,7 @@ name: Act Artifacts
 #   When using artificats with Act, you must set the `artifact-server-path` to something.
 #   Here I have set it to `$PWD/.artifacts`.
 #   Sometimes the artifact-server-path is incorrect. Running something like this might
-#   help discover the correct one. `ifconfig en0 | grep broadcast | awk '{print $2}'`
+#   help discover the correct one. `ipconfig getifaddr en0`
 
 on:
   workflow_dispatch:
